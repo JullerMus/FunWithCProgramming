@@ -7,7 +7,7 @@ bool thirty(int, int);
 void printArray(int[]);
 void reverseArray(int[]);
 void sumArray(int[]);
-void duplicatesInArray(int[]);
+void duplicatesInArray(int[], int);
 
 int main(int argc, char const *argv[])
 {
@@ -19,7 +19,8 @@ int main(int argc, char const *argv[])
 	//printArray(&arr[0]); //Stores value	
 	//reverseArray(&arr2[0]);
 	// sumArray(&arr2[0]);
-	duplicatesInArray(&arr[2]);
+	int alen = sizeof(arr)/sizeof(arr[0]);
+	duplicatesInArray(&arr[0], alen);
 
 	return 0;
 
@@ -62,13 +63,14 @@ void sumArray(int* arr){
 	printf("%d", sum);
 }
 
-void duplicatesInArray(int* arr){
+void duplicatesInArray(int* arr, int alen){
+
 	int duplicate = 0;
-	for(int i = 0; i < (sizeof(arr)/sizeof(arr[0]));i++){
-		for(int j = 0; j < (sizeof(arr)/sizeof(arr[0])); j++){
+	for(int i = 0; i <= alen;i++){
+		for(int j = 0; j <= alen; j++){
 				if(j == arr[i]){
 					duplicate++;
-					printf("%d\n", j);
+					//printf("%d\n", j);
 				}
 			}
 		}
