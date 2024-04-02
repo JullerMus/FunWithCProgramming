@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 //Problems based on: https://www.codeabbey.com/index/task_list
 
@@ -7,6 +8,7 @@ int sum(int, int);
 int sumInLoop(int[], int);
 void sumArraysPairwise(int[], int[], int, int);
 void minOfTwo(int[], int[], int, int);
+void maxOfArray();
 
 int main(int argc, char const *argv[])
 {
@@ -16,8 +18,7 @@ int main(int argc, char const *argv[])
 	int arrlength = sizeof(arr)/sizeof(arr[0]);
 
 
-	minOfTwo(&arr2[0], &arr3[0], 3, 3);
-
+	maxOfArray();
 	return 0;
 }
 
@@ -61,5 +62,27 @@ void minOfTwo(int* arr1, int*arr2, int arr1length, int arr2length){
 				printf("%d\n", arr2[i]);
 			}
 		}
+	}
+}
+
+void maxOfArray(){
+	FILE *numbers;
+	numbers = fopen("numbers2.txt", "r"); //(<File>, <mode>). See https://www.tutorialspoint.com/c_standard_library/c_function_fopen.htm for modes
+
+	int numberarray[300];
+
+	if(numbers == NULL){
+		printf("%s", "Invalid input");
+		exit(0);
+	}
+	else{
+		for(int i = 0; i <= 300; i++){
+			fscanf(numbers, "%d", &numbers[i]);
+		}
+
+		for(int i = 0; i < 10; i++){
+			printf("%d\n", numbers[i]);
+		}
+		fclose(numbers);
 	}
 }
